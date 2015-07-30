@@ -1,6 +1,8 @@
 package org.foodrev.www.android_feature_branches;
 
 import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
@@ -15,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     private NotificationCompat.Builder mBuilder;
     private NotificationManager mNotifyMgr;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +37,30 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void makeNotification() {
+        //setup pending intent for notification action
+        Intent resultIntent = new Intent(getApplicationContext(), Main2Activity.class);
+        // Because clicking the notification opens a new ("special") activity, there's
+        // no need to create an artificial back stack.
+        PendingIntent resultPendingIntent =
+                PendingIntent.getActivity(
+                        this,
+                        0,
+                        resultIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                );
+
         //set up the notification details
         mBuilder =
                 (NotificationCompat.Builder) new NotificationCompat.Builder(getApplicationContext())
                         .setSmallIcon(R.drawable.notification_template_icon_bg)
                         .setContentTitle("My notification")
+                        .setContentIntent(resultPendingIntent) //setting pending intent action
                         .setContentText("Hello World!");
 
+
         int mNotificationId = 001;
+
+
 
         // Gets a NotificationManager service instance
         mNotifyMgr =
