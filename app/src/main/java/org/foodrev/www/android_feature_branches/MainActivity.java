@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
         basicButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                //place button action here
+                //Toast.makeText(<get the application context>, "some string message", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Hello Button",Toast.LENGTH_SHORT).show();
             }
         });
 
