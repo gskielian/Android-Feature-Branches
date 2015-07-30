@@ -4,29 +4,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    private Button basicButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        basicButton = (Button) findViewById(R.id.button);
-
-
-        basicButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                //Toast.makeText(<get the application context>, "some string message", Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(), "Hello Button",Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
     }
 
     @Override
